@@ -1,0 +1,41 @@
+{% include "admin/admin_header.html" %}
+<style>
+    .my_div{
+        min-height: 192px;
+    }
+</style>
+<center>
+<div class="my_div">
+    Admin edit mocktest
+
+    <form action="" method="post" enctype="multipart/form-data">
+        <table>
+            <tr>
+                <th>title</th>
+                <td><input type="text" name="title" value={{data.title}}  required></td>
+            </tr>
+            <tr>
+                <th>instruction</th>
+                <td><textarea name="instruction"  id="" cols="30" rows="10" required>{{data.instruction}} </textarea></td>
+            </tr>
+            <tr>
+                <th>duration</th>
+                <td><input type="text" name="duration" value={{data.duration}}  required></td>
+            </tr>
+         
+          
+            <tr>
+                <th></th>
+                <td>
+                    <input type="submit" name="submit">
+                    <button><a href="/admin_view_mocktest">Cancel</a></button>
+                    
+                </td>
+            </tr>
+        </table>
+    </form>
+
+
+</div>
+</center>
+{% include "public/footer.html" %}

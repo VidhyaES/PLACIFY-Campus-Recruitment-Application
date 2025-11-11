@@ -1,0 +1,109 @@
+{% include "company/company_header.html" %}
+<style>
+    /* Styling for the container holding the content */
+    .my_div {
+        min-height: 77vh;
+        margin-top: 50px;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+    }
+
+    /* Table styles */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background-color: #ffffff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f2f2f2;
+        color: #333;
+        font-weight: bold;
+    }
+
+    td a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    td a:hover {
+        text-decoration: underline;
+    }
+
+    /* Button styles */
+    .btn {
+        background-color: #007bff;
+        color: white;
+        padding: 8px 15px;
+        text-decoration: none;
+        border-radius: 4px;
+        margin-right: 10px;
+    }
+
+    .btn:hover {
+        background-color: #0056b3;
+    }
+
+    /* Center alignment */
+    .center-content {
+        text-align: center;
+    }
+
+    /* Responsive design for smaller screens */
+    @media (max-width: 768px) {
+        table {
+            font-size: 14px;
+        }
+        .my_div {
+            padding: 15px;
+        }
+    }
+</style>
+
+<div class="center-content">
+    <div class="my_div">
+        <h3>View Post</h3>
+        <a href="/company_add_post" class="btn">Add Post</a>
+
+        <table>
+            <tr>
+                <th>Sl No</th>
+                <th>Company</th>
+                <th>Job Position</th>
+                <!-- <th>Description</th> -->
+                <th>Exam</th>
+                <th>Status</th>
+                <th>Applicants</th>
+                <th>Exam</th>
+                <th>Action</th>
+            </tr>
+            {% for i in data %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ i.COMPANY.name }}</td>
+                    <td>{{ i.job_vacancy }}</td>
+                    <!-- <td>{{ i.description }}</td> -->
+                    <td>{{ i.exam }}</td>
+                    <td>{{ i.status }}</td>
+                    <td><a href="/company_view_applications/{{ i.id }}">Applicants</a></td>
+                    <td><a href="/company_view_mocktest/{{ i.id }}">Exam</a></td>
+                    <td>
+                        <a href="/company_edit_post/{{ i.id }}" class="btn">Edit</a>
+                        <a href="/company_delete_post/{{ i.id }}" class="btn" style="background-color: #dc3545;">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+{% include "public/footer.html" %}

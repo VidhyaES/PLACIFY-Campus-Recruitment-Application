@@ -1,0 +1,42 @@
+{% include "admin/admin_header.html" %}
+<style>
+    .my_div{
+        min-height: 77vh;
+        margin-top: 50px;
+    }
+</style>
+<center>
+<div class="my_div">
+    Admin ADD mocktest
+
+    <form action="" method="post" enctype="multipart/form-data">
+        <table>
+            <tr>
+                <th>title</th>
+                <td><input type="text" name="title"  required></td>
+            </tr>
+            <tr>
+                <th>instruction</th>
+                <td><input type="text" name="instruction"  required></td>
+            </tr>
+            <tr>
+                <th>duration</th>
+                <td><input type="text" name="duration"  required></td>
+            </tr>
+         
+          
+            <tr>
+                <th></th>
+                <td>
+                    <input type="submit" name="submit">
+                    <button><a href="/admin_view_mocktest">Cancel</a></button>
+                    
+                </td>
+            </tr>
+        </table>
+    </form>
+
+
+</div>
+</center>
+{% include "public/footer.html" %}

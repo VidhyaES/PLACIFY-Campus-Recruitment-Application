@@ -1,0 +1,86 @@
+{% include "admin/admin_header.html" %}
+<style>
+    .my_div {
+        min-height: 87vh;
+        margin-top: 50px;
+        padding: 30px;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        width: 80%;
+        margin: 50px auto;
+    }
+
+    /* Heading Styling */
+    h3 {
+        text-align: center;
+        color: #333;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    /* Table Styling */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: left;
+        border: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #007bff;
+        color: white;
+        font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    tr:hover {
+        background-color: #f1f1f1;
+    }
+</style>
+<center>
+<div class="my_div">
+    <a href="/admin_add_questions">ADD +</a><br>
+    Admin view questions
+    <table border="1">
+        <tr>
+            <th>sl no</th>
+            <th>questions</th>
+            <th>option A</th>
+            <th>option B</th>
+            <th>option C</th>
+            <th>option D</th>
+            <th>Answer</th>
+            <th>Score</th>
+            <th>status</th>
+            <th>Action</th>
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.question}}</td>
+            <td>{{i.option_1}}</td>
+            <td>{{i.option_2}}</td>
+            <td>{{i.option_3}}</td>
+            <td>{{i.option_4}}</td>
+            <td>{{i.correct_answer}}</td>
+            <td>{{i.score}}</td>
+            <th>{{i.status}}</th>
+            <td>
+                <a href="/admin_edit_questions/{{i.id}}">Edit</a>
+                <a href="/admin_delete_questions/{{i.id}}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+</center>
+{% include "public/footer.html" %}

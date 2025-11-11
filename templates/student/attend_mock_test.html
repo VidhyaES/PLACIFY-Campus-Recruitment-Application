@@ -1,0 +1,201 @@
+{% include "student/student_header.html" %}
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 0;
+    }
+
+    .my_div {
+        margin-top: 50px;
+        min-height: 592px;
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    #timer {
+        font-size: 20px;
+        font-weight: bold;
+        color: #d9534f;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    h2 {
+        text-align: center;
+        font-size: 28px;
+        color: #343a40;
+        margin-bottom: 30px;
+    }
+
+    .question {
+        margin-bottom: 30px;
+    }
+
+    .question h3 {
+        font-size: 20px;
+        color: #495057;
+        margin-bottom: 10px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 15px;
+        font-size: 18px;
+        color: #343a40;
+    }
+
+    input[type="radio"] {
+        margin-right: 10px;
+    }
+
+    button {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        display: inline-block;
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    button:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+    }
+
+    button:hover {
+        background-color: #218838;
+    }
+
+    .form-container {
+        text-align: center;
+    }
+</style>
+
+<div class="my_div">
+    <div id="timer">Time Remaining: 60 seconds</div>
+
+    <h2>{{ mock_test.title }}</h2>
+
+    <form method="post" id="testForm">
+        {% csrf_token %}
+        <div class="question">
+            <h3>{{ question.question }}</h3>
+            <label>
+                <input type="radio" name="answer" value="{{ question.option_1 }}">
+                {{ question.option_1 }}
+            </label>
+            <label>
+                <input type="radio" name="answer" value="{{ question.option_2 }}">
+                {{ question.option_2 }}
+            </label>
+            <label>
+                <input type="radio" name="answer" value="{{ question.option_3 }}">
+                {{ question.option_3 }}
+            </label>
+            <label>
+                <input type="radio" name="answer" value="{{ question.option_4 }}">
+                {{ question.option_4 }}
+            </label>
+        </div>
+
+        <div class="form-container">
+            {% if next_question_id %}
+                <button type="button" id="next-btn" onclick="nextQuestion()">Next Question</button>
+            {% else %}
+                <button type="button" id="finish-btn" onclick="submitAnswer()">Finish Test</button>
+            {% endif %}
+        </div>
+    </form>
+</div>
+
+<script>
+    let timer = 60;  // Time limit for each question in seconds
+    let countdown;
+    let questionId = { question_id };  // The current question's ID
+    let mockTestId = { mock_test_id };  // The mock test ID
+    let nextQuestionId = { next_question_id }; // The ID of the next question (or None if it's the last question)
+
+    function resetTimer() {
+        // Clear existing timer if any
+        if (countdown) {
+            clearInterval(countdown);
+        }
+
+        // Reset timer to 60 seconds
+        timer = 60;
+        document.getElementById('timer').innerText = "Time Remaining: " + timer + " seconds";
+
+        // Start the timer
+        startTimer();
+    }
+
+    function startTimer() {
+        countdown = setInterval(function() {
+            timer--;
+            document.getElementById('timer').innerText = "Time Remaining: " + timer + " seconds";
+
+            if (timer <= 0) {
+                clearInterval(countdown);  // Stop the timer
+                submitAnswer();  // Automatically submit the answer after time is up if no action is taken
+                document.getElementById('next-btn').disabled = false;  // Enable the next button after time runs out
+            }
+        }, 1000);
+    }
+
+    function submitAnswer() {
+        let selectedAnswer = document.querySelector('input[name="answer"]:checked');
+        let answer = selectedAnswer ? selectedAnswer.value : ''; // Get the selected answer
+
+        // If no answer is selected, just move to the next question
+        if (!answer) {
+            nextQuestion();
+        }
+
+        // Send the answer via AJAX
+        fetch('/submit_answer', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}',
+            },
+            body: JSON.stringify({
+                'question_id': questionId,
+                'answer': answer,
+                'mock_test_id': mockTestId,
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.next_question) {
+                // Reset the timer and go to the next question
+                questionId = data.next_question;
+                resetTimer();
+                window.location.href = '/student_attend_mock_test/' + mockTestId + '/' + questionId; // Redirect to the next question
+            } else {
+                alert("Test completed!");
+                window.location.href = '/student_view_result/' + mockTestId; // Redirect to results page
+            }
+        });
+    }
+
+    function nextQuestion() {
+        submitAnswer();  // Submit the current question's answer
+    }
+
+    // Start the timer when the page loads
+    resetTimer();
+</script>
+
+{% include "public/footer.html" %}

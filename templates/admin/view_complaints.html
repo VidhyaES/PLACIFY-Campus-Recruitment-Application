@@ -1,0 +1,74 @@
+{% include "admin/admin_header.html" %}
+<style>
+    .my_div {
+        min-height: 87vh;
+        margin-top: 50px;
+        padding: 30px;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        width: 80%;
+        margin: 50px auto;
+    }
+
+    /* Heading Styling */
+    h3 {
+        text-align: center;
+        color: #333;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    /* Table Styling */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: left;
+        border: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #007bff;
+        color: white;
+        font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    tr:hover {
+        background-color: #f1f1f1;
+    }
+</style>
+<center>
+<div class="my_div">
+    Admin view complaints
+    <table>
+        <tr>
+            <th>sl no</th>
+            <th>Date</th>
+            <th>user</th>
+            <th>complaint</th>
+            <th>reply</th>
+            <th>Action</th>
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.date}}</td>
+            <td>{{i.STUDENT.first_name}}</td>
+            <td>{{i.complaint}}</td>
+            <td>{{i.reply}}</td>
+            <td><a href="/admin_send_reply/{{i.id}}">send reply</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+</center>
+{% include "public/footer.html" %}

@@ -1,0 +1,69 @@
+{% include "public/public_header.html" %}
+<style>
+    .my_div{
+        margin-top:100px;
+    }
+</style>
+<center>
+    <div class="my_div">
+   company registration
+
+    <form action="" method="post" enctype="multipart/form-data">
+        <table>
+            <tr>
+                <th>username</th>
+                <td><input type="text" name="username"  required></td>
+            </tr>
+            <tr>
+                <th>password</th>
+                <td><input type="password" name="password"  required></td>
+            </tr>
+            <tr>
+                <th>company name</th>
+                <td><input type="text" name="company_name"  required></td>
+            </tr>
+        
+            <tr>
+                <th>Contact</th>
+                <td><input type="text" name="contact"  required></td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td><input type="email" name="email" pattern=".+.com" required></td>
+            </tr>
+            <tr>
+                <th>place</th>
+                <td><input type="text" name="place"  required></td>
+            </tr>
+            <tr>
+                <th>pin</th>
+                <td><input type="text" name="pin"  required></td>
+            </tr>
+            <tr>
+                <th>post</th>
+                <td><input type="text" name="post"  required></td>
+            </tr>
+            <tr>
+                <th>city</th>
+                <td><input type="text" name="city"  required></td>
+            </tr>
+            <tr>
+                <th>district</th>
+                <td><input type="text" name="district"  required></td>
+            </tr>
+         
+            <tr>
+                <th></th>
+                <td>
+                    <input type="submit" name="submit">
+                    <button><a href="/">Cancel</a></button>
+                    
+                </td>
+            </tr>
+        </table>
+    </form>
+
+
+</div>
+</center>
+{% include "public/footer.html" %}

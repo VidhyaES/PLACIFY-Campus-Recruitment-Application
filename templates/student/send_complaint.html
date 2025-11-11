@@ -1,0 +1,109 @@
+{% include "student/student_header.html" %}
+
+<style>
+    /* Main container style */
+    .my_div {
+        margin-top: 70px;
+        min-height: 77vh;
+        width: 80%;
+       
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        padding: 40px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Form style */
+    form {
+        margin-bottom: 380px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    textarea {
+        padding: 12px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+        resize: none;
+    }
+
+    input[type="submit"] {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        width:100px;
+        transition: background-color 0.3s;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+
+    /* Table styling */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 30px;
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: left;
+        border: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #007bff;
+        color: white;
+        font-weight: bold;
+    }
+
+    td {
+        background-color: #fff;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .my_div {
+            width: 90%;
+            padding: 20px;
+        }
+
+        form textarea {
+            font-size: 14px;
+            padding: 10px;
+        }
+
+        table {
+            font-size: 14px;
+        }
+    }
+</style>
+
+<center>
+    <div class="my_div">
+        <a href="/student_view_my_complaints" class="btn btn-primary">view my complaints</a>
+        <h3>Submit a Complaint</h3>
+        
+        <!-- Complaint Form -->
+        <form action="" method="post">
+            <textarea name="complaint" placeholder="Describe your complaint here..." cols="25" rows="10" required></textarea>
+            <input type="submit" name="submit" value="Submit">
+        </form>
+
+        <!-- Complaints Table -->
+       
+    </div>
+</center>
+
+{% include "public/footer.html" %}

@@ -1,0 +1,41 @@
+{% include "admin/admin_header.html" %}
+<style>
+    .my_div{
+        min-height: 192px;
+    }
+</style>
+<center>
+<div class="my_div">
+    Admin ADD  skill development programs
+
+    <form action="" method="post" enctype="multipart/form-data">
+        <table>
+            <tr>
+                <th>video</th>
+                <td><input type="file" name="video"  required></td>
+            </tr>
+            <tr>
+                <th>details</th>
+                <td><input type="text" name="details"  required></td>
+            </tr>
+            <tr>
+                <th>urls</th>
+                <td><input type="text" name="urls"  required></td>
+            </tr>
+         
+          
+            <tr>
+                <th></th>
+                <td>
+                    <input type="submit" name="submit">
+                    <button><a href="/admin_view_skill_development_category">Cancel</a></button>
+                    
+                </td>
+            </tr>
+        </table>
+    </form>
+
+
+</div>
+</center>
+{% include "public/footer.html" %}

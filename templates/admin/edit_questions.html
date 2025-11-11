@@ -1,0 +1,57 @@
+{% include "admin/admin_header.html" %}
+<style>
+    .my_div{
+        min-height: 192px;
+    }
+</style>
+<center>
+<div class="my_div">
+    Admin edit  mock test question
+
+    <form action="" method="post" enctype="multipart/form-data">
+        <table>
+            <tr>
+                <th>question</th>
+                <td><textarea name="question" id="" cols="30" rows="10" required>{{data.question}}</textarea></td>
+            </tr>
+            <tr>
+                <th>option 1</th>
+                <td><input type="text" name="option_1" value={{data.option_1}} required></td>
+            </tr>
+            <tr>
+                <th>option 2</th>
+                <td><input type="text" name="option_2" value={{data.option_2}} required></td>
+            </tr>
+            <tr>
+                <th>option 3</th>
+                <td><input type="text" name="option_3" value={{data.option_3}}  required></td>
+            </tr>
+            <tr>
+                <th>option 4</th>
+                <td><input type="text" name="option_4" value={{data.option_4}} required></td>
+            </tr>
+            <tr>
+                <th>answer</th>
+                <td><input type="text" name="correct_answer" value={{data.correct_answer}} required></td>
+            </tr>
+            <tr>
+                <th>score</th>
+                <td><input type="text" name="score" value= {{data.score}} required></td>
+            </tr>
+         
+          
+            <tr>
+                <th></th>
+                <td>
+                    <input type="submit" name="submit">
+                    <button><a href="/admin_view_mocktest">Cancel</a></button>
+                    
+                </td>
+            </tr>
+        </table>
+    </form>
+
+
+</div>
+</center>
+{% include "public/footer.html" %}

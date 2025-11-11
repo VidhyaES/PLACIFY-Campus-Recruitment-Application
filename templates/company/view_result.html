@@ -1,0 +1,115 @@
+{% include "company/company_header.html" %}
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f7fc;
+        margin: 0;
+        padding: 0;
+    }
+
+    .my_div {
+        margin-top: 50px;
+        padding: 30px;
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    h2 {
+        text-align: center;
+        font-size: 32px;
+        color: #333;
+        margin-bottom: 30px;
+        font-weight: bold;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 16px;
+        margin-top: 20px;
+    }
+
+    table, th, td {
+        border: 1px solid #ddd;
+        border-radius: 6px;
+    }
+
+    th, td {
+        padding: 14px;
+        text-align: center;
+        color: #333;
+    }
+
+    th {
+        background-color: #007bff;
+        color: white;
+        font-weight: bold;
+    }
+
+    td {
+        background-color: #f9f9f9;
+    }
+
+    td.correct {
+        background-color: #28a745;
+        color: white;
+        font-weight: bold;
+    }
+
+    td.incorrect {
+        background-color: #dc3545;
+        color: white;
+        font-weight: bold;
+    }
+
+    .score {
+        text-align: center;
+        font-size: 24px;
+        color: #007bff;
+        margin-top: 30px;
+        font-weight: bold;
+    }
+
+    .table-container {
+        overflow-x: auto;
+    }
+</style>
+
+<div class="my_div">
+    <h2>Mock Test Results</h2>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Question</th>
+                    <th>Your Answer</th>
+                    <th>Correct Answer</th>
+                    <th>Result</th>
+                    <th>Time Taken (seconds)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for answer in student_answers %}
+                    <tr>
+                        <td>{{ answer.QUESTION.question }}</td>
+                        <td>{{ answer.selected_answer }}</td>
+                        <td>{{ answer.QUESTION.correct_answer }}</td>
+                        <td >{{ answer.result }}</td>
+                        <td>{{ answer.time_taken }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <h3 class="score">Total Score: {{ total_score }}</h3>
+    <center> <a href="/student_home" class="btn btn-primary">Go Back</a> </center>
+    
+</div>
+
+{% include "public/footer.html" %}

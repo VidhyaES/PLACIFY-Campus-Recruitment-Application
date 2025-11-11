@@ -1,0 +1,77 @@
+{% include "company/company_header.html" %}
+<style>
+    .my_div {
+        margin-top: 50px;
+        min-height: 592px;
+    }
+    /* Flexbox to align charts in a row */
+    .chart-container {
+        width: 48%; /* Adjust to fit both charts in a row with some space in between */
+        height: 400px;
+        display: inline-block;
+        margin-right: 2%; /* Space between the charts */
+    }
+    .chart-container:last-child {
+        margin-right: 0; /* Remove right margin on the last chart */
+    }
+    .chart-wrapper {
+        display: flex;
+        justify-content: space-between; /* Align charts side by side */
+        gap: 2%; /* Optional: space between charts */
+    }
+</style>
+<center>
+<div class="my_div">
+    <h3>Company Home Page</h3>
+
+    <!-- Flexbox container for pie charts in a row -->
+    <div class="chart-wrapper">
+        <div class="chart-container">
+            <canvas id="postsChart"></canvas>
+        </div>
+        <div class="chart-container">
+            <canvas id="applicantsChart"></canvas>
+        </div>
+    </div>
+</div>
+{% include "public/footer.html" %}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Pie Chart for Posts Count
+    var postsCtx = document.getElementById('postsChart').getContext('2d');
+    var postsChart = new Chart(postsCtx, {
+        type: 'pie',
+        data: {
+            labels: ['Posts'], // Only one label for posts
+            datasets: [{
+                data: [{{ posts_count }}], // Use the posts count only
+                backgroundColor: ['#36A2EB'],
+                borderColor: ['#fff'],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true
+        }
+    });
+
+    // Pie Chart for Applicants Count
+    var applicantsCtx = document.getElementById('applicantsChart').getContext('2d');
+    var applicantsChart = new Chart(applicantsCtx, {
+        type: 'pie',
+        data: {
+            labels: ['Applicants'], // Only one label for applicants
+            datasets: [{
+                data: [{{ applicants_count }}], // Use the applicants count only
+                backgroundColor: ['#FF6384'],
+                borderColor: ['#fff'],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true
+        }
+    });
+</script>
+</center>

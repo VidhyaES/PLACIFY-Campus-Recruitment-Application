@@ -1,0 +1,118 @@
+{% include "student/student_header.html" %}
+
+<style>
+    /* Styling for the main container */
+    .my_div {
+        margin-top: 50px;
+        min-height: 77vh;
+        width: 80%;
+        margin: 0 auto;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        padding: 40px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Heading styling */
+    h3 {
+        text-align: center;
+        color: #333;
+        font-size: 28px;
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
+
+    /* Table styling */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: left;
+        border: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #007bff;
+        color: white;
+        font-weight: bold;
+    }
+
+    td {
+        background-color: #fff;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    /* Link styling */
+    a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+        .my_div {
+            width: 90%;
+            padding: 20px;
+        }
+
+        h3 {
+            font-size: 24px;
+        }
+
+        table {
+            font-size: 14px;
+        }
+    }
+</style>
+
+
+<style>
+    /* Your existing CSS styles */
+</style>
+
+<center>
+    <div class="my_div">
+        <h3>Student View Applications</h3>
+
+        <table>
+            <tr>
+                <th>Sl No</th>
+                <th>Job Post</th>
+                <th>Candidate</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+
+            {% for i in data %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ i.POST.job_vacancy }}</td>
+                <td>{{ i.STUDENT.first_name }}</td>
+                <td>{{ i.status }}</td>
+                <td>
+                    {% if i.status == 'approved' %}
+                        {% if i.mock_test_attempted %}
+                            <button disabled>Exam Attended</button>
+                        {% else %}
+                            <a href="/student_view_mock_tests/{{ i.POST.id }}">Attend exam</a>
+                        {% endif %}
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</center>
+
+{% include "public/footer.html" %}

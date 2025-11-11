@@ -1,0 +1,156 @@
+{% include "company/company_header.html" %}
+<style>
+    /* Main container for the content */
+    .my_div {
+        min-height: 77vh;
+        margin-top: 50px;
+        padding: 30px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        width: 80%;
+        margin: 50px auto;
+    }
+
+    /* Heading Style */
+    .my_div h3 {
+        text-align: center;
+        color: #333;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    /* Table styling */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background-color: #fff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f2f2f2;
+        color: #333;
+        font-weight: bold;
+    }
+
+    td {
+        background-color: #ffffff;
+        color: #555;
+    }
+
+    /* Link styling for view resume */
+    td a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    td a:hover {
+        text-decoration: underline;
+    }
+
+    /* Button styles for approve/reject */
+    td a:hover {
+        color: #0056b3;
+    }
+
+    .btn-action {
+        background-color: #007bff;
+        color: white;
+        padding: 8px 15px;
+        border-radius: 4px;
+        text-decoration: none;
+        margin-right: 10px;
+    }
+
+    .btn-action:hover {
+        background-color: #0056b3;
+    }
+
+    .btn-reject {
+        background-color: #dc3545;
+        color: white;
+        padding: 8px 15px;
+        border-radius: 4px;
+        text-decoration: none;
+    }
+
+    .btn-reject:hover {
+        background-color: #c82333;
+    }
+
+    /* Center alignment for content */
+    .center-content {
+        text-align: center;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        table {
+            font-size: 14px;
+        }
+
+        .my_div {
+            padding: 20px;
+            width: 95%;
+        }
+
+        th, td {
+            font-size: 14px;
+            padding: 10px;
+        }
+
+        .btn-action, .btn-reject {
+            width: 100%;
+            padding: 10px 15px;
+            text-align: center;
+            margin-top: 10px;
+        }
+    }
+</style>
+<div class="my_div">
+    <h3>Company View Applications</h3>
+
+    <table>
+        <tr>
+            <th>Sl No</th>
+            <th>Job Post</th>
+            <th>Candidate</th>
+            <th>Status</th>
+            <th>Resume</th>
+            <th>Action</th>
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ i.POST.job_vacancy }}</td>
+            <td>{{ i.STUDENT.first_name }}</td>
+            <td>{{ i.status }}</td>
+            <td>
+                {% if i.RESUME_id %}
+                    <a href="/company_view_applicant_resume/{{ i.id }}" class="btn-action">View Resume</a>
+                {% else %}
+                    <span class="no-resume">No Resume Submitted</span>
+                {% endif %}
+            </td>
+            <td>
+                {% if i.status == 'applied' %}
+                <a href="/company_approve_applicant/{{ i.id }}" class="btn-action">Approve</a>
+                <a href="/company_reject_applicant/{{ i.id }}" class="btn-reject">Reject</a>
+                {% elif i.status == 'approved' %}
+                <a href="/company_view_exam_result/{{i.STUDENT_id}}">View Result</a>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% include "public/footer.html" %}

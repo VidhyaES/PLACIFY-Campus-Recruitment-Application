@@ -1,0 +1,100 @@
+{% include "student/student_header.html" %}
+<style>
+    .my_div {
+        margin-top: 50px;
+        min-height: 592px;
+    }
+    /* Flexbox to align charts in a row */
+    .chart-container {
+        width: 32%; /* Adjust to fit three charts in a row with some space in between */
+        height: 400px;
+        display: inline-block;
+        margin-right: 2%; /* Space between the charts */
+    }
+    .chart-container:nth-child(3) {
+        margin-right: 0; /* Remove right margin on the last chart */
+    }
+    .chart-wrapper {
+        display: flex;
+        justify-content: space-between; /* Align charts side by side */
+        gap: 2%; /* Optional: space between charts */
+    }
+</style>
+
+<center>
+<div class="my_div">
+    <h3>Student Home Page</h3>
+
+    <!-- Flexbox container for pie charts in a row -->
+    <div class="chart-wrapper">
+        <div class="chart-container">
+            <canvas id="mockTestsChart"></canvas>
+        </div>
+        <div class="chart-container">
+            <canvas id="jobsChart"></canvas>
+        </div>
+        <div class="chart-container">
+            <canvas id="programsChart"></canvas>
+        </div>
+    </div>
+</div>
+</center>
+
+{% include "public/footer.html" %}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Pie Chart for Mock Tests Count
+    var mockTestsCtx = document.getElementById('mockTestsChart').getContext('2d');
+    var mockTestsChart = new Chart(mockTestsCtx, {
+        type: 'pie',
+        data: {
+            labels: ['Mock Tests'], // Only one label for mock tests
+            datasets: [{
+                data: [{{ mock_tests_count }}], // Use the mock tests count only
+                backgroundColor: ['#36A2EB'],
+                borderColor: ['#fff'],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true
+        }
+    });
+
+    // Pie Chart for Jobs Count
+    var jobsCtx = document.getElementById('jobsChart').getContext('2d');
+    var jobsChart = new Chart(jobsCtx, {
+        type: 'pie',
+        data: {
+            labels: ['Jobs'], // Only one label for jobs
+            datasets: [{
+                data: [{{ jobs_count }}], // Use the jobs count only
+                backgroundColor: ['#FF6384'],
+                borderColor: ['#fff'],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true
+        }
+    });
+
+    // Pie Chart for Programs Count
+    var programsCtx = document.getElementById('programsChart').getContext('2d');
+    var programsChart = new Chart(programsCtx, {
+        type: 'pie',
+        data: {
+            labels: ['Programs'], // Only one label for programs
+            datasets: [{
+                data: [{{ programs_count }}], // Use the programs count only
+                backgroundColor: ['#FFCE56'],
+                borderColor: ['#fff'],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true
+        }
+    });
+</script>

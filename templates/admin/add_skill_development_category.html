@@ -1,0 +1,37 @@
+{% include "admin/admin_header.html" %}
+<style>
+    .my_div{
+        min-height: 192px;
+    }
+</style>
+<center>
+<div class="my_div">
+    Admin ADD  skill development category
+
+    <form action="" method="post" enctype="multipart/form-data">
+        <table>
+            <tr>
+                <th>category</th>
+                <td><input type="text" name="category"  required></td>
+            </tr>
+            <tr>
+                <th>description</th>
+                <td><input type="text" name="description"  required></td>
+            </tr>
+         
+          
+            <tr>
+                <th></th>
+                <td>
+                    <input type="submit" name="submit">
+                    <button><a href="/admin_view_skill_development_category">Cancel</a></button>
+                    
+                </td>
+            </tr>
+        </table>
+    </form>
+
+
+</div>
+</center>
+{% include "public/footer.html" %}

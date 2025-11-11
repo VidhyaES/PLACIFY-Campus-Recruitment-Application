@@ -1,0 +1,141 @@
+{% include "company/company_header.html" %}
+<style>
+    /* Styling for the main container */
+    .my_div {
+        min-height: 77vh;
+        margin-top: 50px;
+        padding: 30px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        width: 60%;
+        margin: 50px auto;
+    }
+
+    /* Title style */
+    .my_div h3 {
+        text-align: center;
+        color: #333;
+        font-size: 24px;
+        margin-bottom: 30px;
+    }
+
+    /* Table styling for form */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: left;
+        font-size: 16px;
+    }
+
+    th {
+        width: 30%;
+        background-color: #f2f2f2;
+        color: #333;
+        font-weight: bold;
+    }
+
+    td {
+        background-color: #fff;
+        border: 1px solid #ddd;
+    }
+
+    /* Input field styles */
+    input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 16px;
+        margin-top: 5px;
+    }
+
+    input[type="submit"] {
+        background-color: #007bff;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 15px;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+
+    /* Cancel button styling */
+    button {
+        background-color: #dc3545;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 15px;
+    }
+
+    button a {
+        color: white;
+        text-decoration: none;
+    }
+
+    button:hover {
+        background-color: #c82333;
+    }
+
+    /* Form layout for responsive design */
+    @media (max-width: 768px) {
+        .my_div {
+            width: 90%;
+            padding: 20px;
+        }
+
+        th, td {
+            font-size: 14px;
+            padding: 10px;
+        }
+
+        input[type="submit"], button {
+            width: 100%;
+            padding: 10px 15px;
+        }
+    }
+</style>
+
+<div class="my_div">
+    <h3>Add Post</h3>
+
+    <form action="" method="post">
+        <table>
+            <tr>
+                <th>Job Vacancy</th>
+                <td><input type="text" name="job_vacancy" required></td>
+            </tr>
+            <!-- <tr>
+                <th>Description</th>
+                <td><input type="text" name="description" required></td>
+            </tr> -->
+            <tr>
+                <th>Exam</th>
+                <td><input type="text" name="exam" required></td>
+            </tr>
+            <tr>
+                <th></th>
+                <td>
+                    <input type="submit" name="submit" value="Submit">
+                    <button><a href="/company_view_post">Cancel</a></button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+{% include "public/footer.html" %}

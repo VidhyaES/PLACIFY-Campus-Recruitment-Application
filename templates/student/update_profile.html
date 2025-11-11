@@ -1,0 +1,187 @@
+{% include "student/student_header.html" %}
+
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 0;
+    }
+
+    .my_div {
+        margin-top: 50px;
+        min-height: 592px;
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    h3 {
+        font-size: 28px;
+        color: #343a40;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    form {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    table {
+        width: 100%;
+        margin-bottom: 20px;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: left;
+        font-size: 16px;
+        color: #495057;
+    }
+
+    th {
+        background-color: #007bff;
+        color: white;
+        font-weight: bold;
+    }
+
+    td input,
+    td select {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+
+    td input:focus,
+    td select:focus {
+        border-color: #007bff;
+        outline: none;
+    }
+
+    td input[type="file"] {
+        padding: 0;
+        border: none;
+    }
+
+    .profile-pic {
+        display: block;
+        margin: 0 auto;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .form-btn {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        display: block;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .form-btn:hover {
+        background-color: #218838;
+    }
+
+    .form-btn:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+    }
+
+    .form-container {
+        text-align: center;
+    }
+
+</style>
+
+<center>
+    <div class="my_div">
+        <h3>Update Profile</h3>
+
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <th>First Name</th>
+                    <td><input type="text" name="first_name" value="{{ data.first_name }}" required></td>
+                </tr>
+                <tr>
+                    <th>Last Name</th>
+                    <td><input type="text" name="last_name" value="{{ data.last_name }}" required></td>
+                </tr>
+                <tr>
+                    <th>Date of Birth</th>
+                    <td><input type="date" name="dob" value="{{ data.dob }}" required></td>
+                </tr>
+                <tr>
+                    <th>Gender</th>
+                    <td>
+                        <select name="gender" required>
+                            <option value="{{ data.gender }}">{{ data.gender }}</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td><input type="email" name="email" value="{{ data.email }}" required></td>
+                </tr>
+                <tr>
+                    <th>Contact</th>
+                    <td><input type="text" name="contact" value="{{ data.contact }}" required></td>
+                </tr>
+                <tr>
+                    <th>Place</th>
+                    <td><input type="text" name="place" value="{{ data.place }}" required></td>
+                </tr>
+                <tr>
+                    <th>Pin</th>
+                    <td><input type="text" name="pin" value="{{ data.pin }}" required></td>
+                </tr>
+                <tr>
+                    <th>Post</th>
+                    <td><input type="text" name="post" value="{{ data.post }}" required></td>
+                </tr>
+                <tr>
+                    <th>City</th>
+                    <td><input type="text" name="city" value="{{ data.city }}" required></td>
+                </tr>
+                <tr>
+                    <th>District</th>
+                    <td><input type="text" name="district" value="{{ data.district }}" required></td>
+                </tr>
+                <tr>
+                    <th>Profile Picture</th>
+                    <td>
+                        <img src="/static/media/{{ data.photo }}" alt="Profile Picture" class="profile-pic">
+                        <input type="file" name="photo">
+                    </td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td><input type="submit" name="submit" value="Update Profile" class="form-btn"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</center>
+
+{% include "public/footer.html" %}

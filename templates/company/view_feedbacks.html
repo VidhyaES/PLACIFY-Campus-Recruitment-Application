@@ -1,0 +1,102 @@
+{% include "company/company_header.html" %}
+<style>
+    /* Main container styling */
+    .my_div {
+        min-height: 77vh;
+        margin-top: 50px;
+        padding: 30px;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        width: 80%;
+        margin: 50px auto;
+    }
+
+    /* Heading styling */
+    .my_div h3 {
+        text-align: center;
+        color: #333;
+        font-size: 24px;
+        margin-bottom: 20px;
+        font-weight: 600;
+    }
+
+    /* Table styling */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: left;
+        border: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f1f1f1;
+        font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    /* Link styling for the send reply */
+    a {
+        color: #007bff;
+        text-decoration: none;
+        font-size: 16px;
+    }
+
+    a:hover {
+        color: #0056b3;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+        .my_div {
+            width: 90%;
+            padding: 20px;
+        }
+
+        table {
+            font-size: 14px;
+        }
+
+        th, td {
+            padding: 10px;
+        }
+
+        a {
+            font-size: 14px;
+        }
+    }
+</style>
+
+<div class="my_div">
+    <h3>Company View Feedbacks</h3>
+    <table>
+        <tr>
+            <th>Sl No</th>
+            <th>Date</th>
+            <th>User</th>
+            <th>Feedback</th>
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ i.date }}</td>
+            <td>{{ i.STUDENT.first_name }} {{ i.STUDENT.last_name }}</td>
+            <td>{{ i.feedback }}</td>
+
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% include "public/footer.html" %}

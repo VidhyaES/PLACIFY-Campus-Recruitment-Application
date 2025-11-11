@@ -1,0 +1,80 @@
+{% include "admin/admin_header.html" %}
+<style>
+   .my_div {
+        min-height: 87vh;
+        margin-top: 50px;
+        padding: 30px;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        width: 80%;
+        margin: 50px auto;
+    }
+
+    /* Heading Styling */
+    h3 {
+        text-align: center;
+        color: #333;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    /* Table Styling */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: left;
+        border: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #007bff;
+        color: white;
+        font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    tr:hover {
+        background-color: #f1f1f1;
+    }
+</style>
+<center>
+<div class="my_div">
+    <a href="/admin_add_skill_development">ADD +</a><br>
+    Admin view skill_development
+    <table border="1">
+        <tr>
+            <th>sl no</th>
+            <th>video</th>
+            <th>details</th>
+            <th>Video link</th>
+            <th>Action</th>
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td><video width="320" height="140" controls>
+                <source src="/static/media/{{i.video}}" type="video/mp4">
+              Tutorial.
+              </video></td>
+            <td>{{i.details}}</td>
+            <td><a href="/{{i.links}}">visit</a></td>
+     
+            <td>
+                <a href="/admin_edit_skill_development/{{i.id}}">Edit</a>
+                <a href="/admin_delete_skill_development/{{i.id}}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+</center>
+{% include "public/footer.html" %}

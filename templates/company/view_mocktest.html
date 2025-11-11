@@ -1,0 +1,125 @@
+{% include "company/company_header.html" %}
+<style>
+    /* Main container styling */
+    .my_div {
+        min-height: 87vh;
+        margin-top: 50px;
+        padding: 30px;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        width: 80%;
+        margin: 50px auto;
+    }
+
+    /* Heading styling */
+    .my_div h3 {
+        text-align: center;
+        color: #333;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    /* Button styling */
+    a.btn {
+        display: inline-block;
+        padding: 12px 20px;
+        background-color: #007bff;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        font-size: 16px;
+        margin-bottom: 20px;
+        transition: background-color 0.3s ease;
+    }
+
+    a.btn:hover {
+        background-color: #0056b3;
+    }
+
+    /* Table styling */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        font-size: 16px;
+        color: #333;
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: left;
+        border: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f1f1f1;
+        font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    /* Action link styling */
+    td a {
+        text-decoration: none;
+        color: #007bff;
+        margin-right: 10px;
+    }
+
+    td a:hover {
+        color: #0056b3;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+        .my_div {
+            width: 90%;
+            padding: 20px;
+        }
+
+        table {
+            font-size: 14px;
+        }
+
+        th, td {
+            padding: 10px;
+        }
+    }
+</style>
+
+<div class="my_div">
+    <a href="/company_add_mocktest" class="btn">ADD +</a><br>
+    <h3>Company View Mock Tests</h3>
+    
+    <table>
+        <tr>
+            <th>Sl No</th>
+            <th>Title</th>
+            <th>Instruction</th>
+            <th>Duration</th>
+            <th>Questions</th>
+            <th>Action</th>
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.title}}</td>
+            <td>{{i.instruction}}</td>
+            <td>{{i.duration}}</td>
+            <td><a href="/company_view_questions/{{i.id}}">View Questions</a></td>
+            <td>
+                <a href="/company_edit_mocktest/{{i.id}}">Edit</a>
+                <a href="/company_delete_mocktest/{{i.id}}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% include "public/footer.html" %}

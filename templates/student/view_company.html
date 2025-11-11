@@ -1,0 +1,123 @@
+{% include "student/student_header.html" %}
+<style>
+    /* Main container styling */
+    .my_div {
+        margin-top: 50px;
+        min-height: 87vh;
+        padding: 30px;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        width: 80%;
+        margin: 50px auto;
+    }
+
+    /* Heading Styling */
+    h3 {
+        text-align: center;
+        color: #333;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    /* Card styling */
+    .card {
+        margin-bottom: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-body {
+        text-align: center;
+    }
+
+    .card-title {
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .card-text {
+        color: #666;
+        margin-bottom: 15px;
+    }
+
+    /* Action link styling */
+    a {
+        padding: 5px 10px;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        font-size: 14px;
+        transition: background-color 0.3s ease;
+    }
+
+    a:hover {
+        background-color: #0056b3;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .my_div {
+            width: 90%;
+            padding: 20px;
+        }
+
+        .card {
+            margin-bottom: 15px;
+        }
+
+        a {
+            font-size: 12px;
+        }
+    }
+
+    /* Flexbox for search box */
+    .search-box {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .search-box input[type="text"] {
+        width: 70%;  /* Adjust width of search input */
+        margin-right: 10px; /* Space between input and button */
+    }
+
+    .search-box input[type="submit"] {
+        width: 40%;  /* Adjust width of the button */
+    }
+</style>
+
+<div class="my_div">
+    <h3>Student View Company</h3>
+
+    <!-- Search Box Centered -->
+    <div class="search-box">
+        <form method="get" action="">
+            <input type="text" name="search" placeholder="Search Company by Name" class="form-control" value="{{ request.GET.search }}">
+            <input type="submit" name="submit" class="btn btn-primary" value="Search">
+        </form>
+    </div>
+
+    <div class="row">
+        {% for i in data %}
+        <div class="col-md-4 col-sm-6">
+            <div class="card"><br>
+                <div class="card-body">
+                    <h5 class="card-title">{{ i.name }}</h5>
+                    <p class="card-text"><strong>Contact:</strong> {{ i.contact }}</p>
+                    <p class="card-text"><strong>Email:</strong> {{ i.email }}</p>
+                    <p class="card-text"><strong>Place:</strong> {{ i.place }}</p>
+                    <p class="card-text"><strong>District:</strong> {{ i.district }}</p>
+                    <a href="/student_view_company_post/{{ i.id }}" class="btn btn-info">View Post</a>
+                    <a href="/student_send_feedback/{{ i.id }}" class="btn btn-info">Send feedback</a>
+                </div>
+                <br>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% include "public/footer.html" %}

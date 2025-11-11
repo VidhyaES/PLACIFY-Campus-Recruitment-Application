@@ -1,0 +1,88 @@
+{% include "admin/admin_header.html" %}
+<style>
+    .my_div{
+        min-height: 77vh;
+        margin-top: 50px;
+    }
+</style>
+<center>
+<div class="my_div">
+    Admin ADD student
+
+    <form action="" method="post" enctype="multipart/form-data">
+        <table>
+            <tr>
+                <th>username</th>
+                <td><input type="text" name="username"  required></td>
+            </tr>
+            <tr>
+                <th>password</th>
+                <td><input type="password" name="password"  required></td>
+            </tr>
+            <tr>
+                <th>First name</th>
+                <td><input type="text" name="first_name"  required></td>
+            </tr>
+            <tr>
+                <th>Last name</th>
+                <td><input type="text" name="last_name"  required></td>
+            </tr>
+            <tr>
+                <th>dob</th>
+                <td><input type="date" name="dob"  required></td>
+            </tr>
+            <tr>
+                <th>Gender</th>
+                <td>
+                    <input type="radio" name="gender"  value='male'>Male
+                    <input type="radio" name="gender"  value='female'>Female
+                    <input type="radio" name="gender"  value='other'>Other
+                </td>
+            </tr>
+            <tr>
+                <th>Contact</th>
+                <td><input type="text" name="contact"  required></td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td><input type="email" name="email" pattern=".+.com" required></td>
+            </tr>
+            <tr>
+                <th>place</th>
+                <td><input type="text" name="place"  required></td>
+            </tr>
+            <tr>
+                <th>pin</th>
+                <td><input type="text" name="pin"  required></td>
+            </tr>
+            <tr>
+                <th>post</th>
+                <td><input type="text" name="post"  required></td>
+            </tr>
+            <tr>
+                <th>city</th>
+                <td><input type="text" name="city"  required></td>
+            </tr>
+            <tr>
+                <th>district</th>
+                <td><input type="text" name="district"  required></td>
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <td><input type="file" name="photo"  required></td>
+            </tr>
+            <tr>
+                <th></th>
+                <td>
+                    <input type="submit" name="submit">
+                    <button><a href="/admin_view_student">Cancel</a></button>
+                    
+                </td>
+            </tr>
+        </table>
+    </form>
+
+
+</div>
+</center>
+{% include "public/footer.html" %}

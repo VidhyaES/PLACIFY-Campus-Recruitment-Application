@@ -1,0 +1,155 @@
+{% include "company/company_header.html" %}
+<style>
+    /* Main container styling */
+    .my_div {
+        min-height: 87vh;
+        margin-top: 50px;
+        padding: 30px;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        width: 60%;
+        margin: 50px auto;
+    }
+
+    /* Heading styling */
+    .my_div h3 {
+        text-align: center;
+        color: #333;
+        font-size: 24px;
+        margin-bottom: 30px;
+    }
+
+    /* Table styling */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: left;
+        border: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f1f1f1;
+        font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    /* Form input fields styling */
+    textarea, input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 14px;
+    }
+
+    /* Submit button styling */
+    input[type="submit"] {
+        background-color: #28a745;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    /* Cancel button styling */
+    button {
+        padding: 10px 20px;
+        background-color: #dc3545;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    button a {
+        color: white;
+        text-decoration: none;
+    }
+
+    button:hover {
+        background-color: #c82333;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #218838;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+        .my_div {
+            width: 90%;
+            padding: 20px;
+        }
+
+        table {
+            font-size: 14px;
+        }
+
+        th, td {
+            padding: 8px;
+        }
+
+        input[type="submit"], button {
+            font-size: 14px;
+        }
+    }
+</style>
+
+<div class="my_div">
+    <h3>Company Add Mock Test Question</h3>
+
+    <form action="" method="post" enctype="multipart/form-data">
+        <table>
+            <tr>
+                <th>Question</th>
+                <td><textarea name="question" id="" cols="30" rows="5" required></textarea></td>
+            </tr>
+            <tr>
+                <th>Option 1</th>
+                <td><input type="text" name="option_1" required></td>
+            </tr>
+            <tr>
+                <th>Option 2</th>
+                <td><input type="text" name="option_2" required></td>
+            </tr>
+            <tr>
+                <th>Option 3</th>
+                <td><input type="text" name="option_3" required></td>
+            </tr>
+            <tr>
+                <th>Option 4</th>
+                <td><input type="text" name="option_4" required></td>
+            </tr>
+            <tr>
+                <th>Answer</th>
+                <td><input type="text" name="correct_answer" required></td>
+            </tr>
+            <tr>
+                <th></th>
+                <td>
+                    <input type="submit" name="submit" value="Submit">
+                    <button><a href="/company_view_mocktest">Cancel</a></button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+{% include "public/footer.html" %}

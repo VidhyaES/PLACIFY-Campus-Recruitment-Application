@@ -1,0 +1,146 @@
+{% include "company/company_header.html" %}
+<style>
+    /* Main container styling */
+    .my_div {
+        min-height: 87vh;
+        margin-top: 50px;
+        padding: 30px;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        width: 80%;
+        margin: 50px auto;
+    }
+
+    /* Heading styling */
+    .my_div h3 {
+        text-align: center;
+        color: #333;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    /* Table styling */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: left;
+        border: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f1f1f1;
+        font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    /* Button styling for Add new question */
+    a {
+        display: inline-block;
+        padding: 10px 20px;
+        /* background-color: #28a745; */
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        font-size: 16px;
+        margin-bottom: 20px;
+        transition: background-color 0.3s ease;
+    }
+
+    /* Hover effect for Add button */
+    /* a:hover {
+        background-color: #218838;
+    } */
+
+    /* Action buttons styling */
+    a.edit, a.delete {
+        padding: 5px 10px;
+        background-color: #007bff;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        font-size: 14px;
+        margin-right: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    a.edit:hover {
+        background-color: #0056b3;
+    }
+
+    a.delete {
+        background-color: #dc3545;
+    }
+
+    a.delete:hover {
+        background-color: #c82333;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+        .my_div {
+            width: 95%;
+            padding: 20px;
+        }
+
+        table {
+            font-size: 14px;
+        }
+
+        th, td {
+            padding: 8px;
+        }
+
+        a {
+            font-size: 14px;
+        }
+    }
+</style>
+
+<div class="my_div">
+    <a href="/company_add_questions" class="btn btn-primary">ADD +</a><br>
+    <h3>Company View Questions</h3>
+    <table>
+        <tr>
+            <th>Sl No</th>
+            <th>Questions</th>
+            <th>Option A</th>
+            <th>Option B</th>
+            <th>Option C</th>
+            <th>Option D</th>
+            <th>Answer</th>
+            <th>Score</th>
+            <th>Action</th>
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.question}}</td>
+            <td>{{i.option_1}}</td>
+            <td>{{i.option_2}}</td>
+            <td>{{i.option_3}}</td>
+            <td>{{i.option_4}}</td>
+            <td>{{i.correct_answer}}</td>
+            <td>{{i.score}}</td>
+            <td>
+                <a href="/company_edit_questions/{{i.id}}" class="edit">Edit</a>
+                <a href="/company_delete_questions/{{i.id}}" class="delete">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% include "public/footer.html" %}

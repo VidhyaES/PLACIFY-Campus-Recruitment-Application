@@ -1,0 +1,44 @@
+{% include "admin/admin_header.html" %}
+<style>
+    .my_div{
+        min-height: 192px;
+    }
+</style>
+<center>
+<div class="my_div">
+    Admin edit skill development programs
+
+    <form action="" method="post" enctype="multipart/form-data">
+        <table>
+            <tr>
+                <th>video</th>
+                <td><video width="320" height="140" controls>
+                    <source src="/static/media/{{i.video}}" type="video/mp4">
+                  Tutorial.
+                  </video>
+                    <input type="file" name="video" ></td>
+            </tr>
+            <tr>
+                <th>details</th>
+                <td><textarea name="details"  id="" cols="30" rows="10" required>{{data.details}} </textarea></td>
+            </tr>
+            <tr>
+                <th>urls</th>
+                <td><input type="text" name="urls" value={{i.links}}></td>
+            </tr>
+          
+            <tr>
+                <th></th>
+                <td>
+                    <input type="submit" name="submit">
+                    <button><a href="/admin_view_skill_development_category">Cancel</a></button>
+                    
+                </td>
+            </tr>
+        </table>
+    </form>
+
+
+</div>
+</center>
+{% include "public/footer.html" %}

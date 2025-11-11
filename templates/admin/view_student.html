@@ -1,0 +1,87 @@
+{% include "admin/admin_header.html" %}
+
+<style>
+    .my_div{
+        margin-top: 50px;
+        min-height: 87vh;
+        padding: 30px;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        width: 80%;
+        margin: 50px auto;
+    }
+    h3 {
+        text-align: center;
+        color: #333;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: left;
+        border: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #007bff;
+        color: white;
+        font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+</style>
+<center>
+<div class="my_div">
+View student
+<a href="/admin_add_student">ADD</a>
+
+<table>
+    <tr>
+        <th>Sl no</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Photo</th>
+        <th>DOB</th>
+        <th>Gender</th>
+        <th>Contact</th>
+        <th>place</th>
+        <th>pin</th>
+        <th>post</th>
+        <th>city</th>
+        <th>district</th>
+        <th>Action</th>
+    </tr>
+    
+    {% for i in data %}
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{i.first_name}}</td>
+        <td>{{i.last_name}}</td>
+        <td><img src="static/media/{{i.photo}}" alt="" height="50" width="50"></td>
+        <td>{{i.dob}}</td>
+        <td>{{i.gender}}</td>
+        <td>{{i.contact}}</td>
+        <td>{{i.place}}</td>
+        <td>{{i.pin}}</td>
+        <td>{{i.post}}</td>
+        <td>{{i.city}}</td>
+        <td>{{i.district}}</td>
+        <td>
+            <a href="/admin_edit_student/{{i.id}}">Edit</a>
+            <a href="/admin_delete_student/{{i.id}}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+</div>
+</center>
+{% include "public/footer.html" %} 

@@ -1,0 +1,83 @@
+{% include "admin/admin_header.html" %}
+<style>
+    .my_div{
+        min-height: 77vh;
+        margin-top: 50px;
+    }
+</style>
+<center>
+<div class="my_div">
+    Admin Edit student details
+
+    <form action="" method="post" enctype="multipart/form-data">
+        <table>
+            <tr>
+                <th>First name</th>
+                <td><input type="text" name="first_name" value="{{data.first_name}}"  required></td>
+            </tr>
+            <tr>
+                <th>Last name</th>
+                <td><input type="text" name="last_name" value="{{data.last_name}}" required></td>
+            </tr>
+            <tr>
+                <th>dob</th>
+                <td><input type="date" name="dob" value="{{data.dob}}"  required></td>
+            </tr>
+            <tr>
+                <th>Gender</th>
+                <td>
+                    <input type="radio" name="gender"  value='male'{% if data.gender == 'male' %}checked{% endif %}>Male
+                    <input type="radio" name="gender"  value='female' {% if data.gender == 'female' %}checked{% endif %}>Female
+                    <input type="radio" name="gender"  value='other' {% if data.gender == 'other' %}checked{% endif %}>Other
+                </td>
+            </tr>
+            <tr>
+                <th>Contact</th>
+                <td><input type="text" name="contact" value="{{data.contact}}" required></td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td><input type="email" name="email"  value="{{data.email}}" pattern=".+.com" required></td>
+            </tr>
+            <tr>
+                <th>place</th>
+                <td><input type="text" name="place" value="{{data.place}}"  required></td>
+            </tr>
+            <tr>
+                <th>pin</th>
+                <td><input type="text" name="pin" value="{{data.pin}}" required></td>
+            </tr>
+            <tr>
+                <th>post</th>
+                <td><input type="text" name="post" value="{{data.post}}" required></td>
+            </tr>
+            <tr>
+                <th>city</th>
+                <td><input type="text" name="city" value="{{data.city}}" required></td>
+            </tr>
+            <tr>
+                <th>district</th>
+                <td><input type="text" name="district" value="{{data.district}}" required></td>
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <td>
+                    <img src="/static/media/{{data.photo}}" alt="" height="50" width="50">
+                    <input type="file" name="photo" >
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <td>
+                    <input type="submit" name="submit">
+                    <button><a href="/admin_view_student">Cancel</a></button>
+                    
+                </td>
+            </tr>
+        </table>
+    </form>
+
+
+</div>
+</center>
+{% include "public/footer.html" %}

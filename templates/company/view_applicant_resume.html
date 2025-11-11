@@ -1,0 +1,200 @@
+{% include "company/company_header.html" %}
+<style>
+    /* Main container for the content */
+    .my_div {
+        min-height: 77vh;
+        margin-top: 50px;
+        padding: 30px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        width: 80%;
+        margin: 50px auto;
+    }
+
+    /* Heading style */
+    .my_div h3 {
+        text-align: center;
+        color: #333;
+        font-size: 24px;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #eee;
+    }
+
+    /* Table styling */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background-color: #ffffff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    th, td {
+        padding: 12px 15px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+        font-size: 16px;
+    }
+
+    th {
+        background-color: #f2f2f2;
+        color: #333;
+        font-weight: bold;
+        width: 20%;
+    }
+
+    /* Photo styling */
+    .resume-photo {
+        border-radius: 4px;
+        border: 1px solid #ddd;
+        object-fit: cover;
+    }
+
+    /* Link styling */
+    a.external-link {
+        color: #007bff;
+        text-decoration: none;
+        word-break: break-all;
+    }
+
+    a.external-link:hover {
+        text-decoration: underline;
+    }
+
+    /* Empty field styling */
+    .empty-field {
+        color: #999;
+        font-style: italic;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .my_div {
+            padding: 15px;
+            width: 95%;
+            margin: 20px auto;
+        }
+
+        th, td {
+            font-size: 14px;
+            padding: 8px 10px;
+            display: block;
+            width: 100%;
+        }
+
+        th {
+            background-color: #f8f9fa;
+            border-bottom: none;
+            padding-top: 15px;
+        }
+
+        td {
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+    }
+</style>
+
+<div class="my_div">
+    <h3>Applicant Resume Details</h3>
+    <table>
+        <tr>
+            <th>Photo</th>
+            <td>
+                {% if data.photo %}
+                    <img src="{{ data.photo }}" alt="Applicant Photo" class="resume-photo" height="80" width="80">
+                {% else %}
+                    <span class="empty-field">No photo provided</span>
+                {% endif %}
+            </td>
+        </tr>
+
+        <tr>
+            <th>Objective</th>
+            <td>{{ data.objective|default:"<span class='empty-field'>Not specified</span>" }}</td>
+        </tr>
+        
+        <tr>
+            <th>Skills</th>
+            <td>{{ data.skills|default:"<span class='empty-field'>Not specified</span>" }}</td>
+        </tr>
+        
+        <tr>
+            <th>Experience</th>
+            <td>{{ data.experience|default:"<span class='empty-field'>Not specified</span>" }}</td>
+        </tr>
+        
+        <tr>
+            <th>Education</th>
+            <td>{{ data.education|default:"<span class='empty-field'>Not specified</span>" }}</td>
+        </tr>
+        
+        <tr>
+            <th>Certification</th>
+            <td>{{ data.certifications|default:"<span class='empty-field'>Not specified</span>" }}</td>
+        </tr>
+        
+        <tr>
+            <th>Projects</th>
+            <td>{{ data.projects|default:"<span class='empty-field'>Not specified</span>" }}</td>
+        </tr>
+        
+        <tr>
+            <th>Achievements</th>
+            <td>{{ data.achievements|default:"<span class='empty-field'>Not specified</span>" }}</td>
+        </tr>
+        
+        <tr>
+            <th>Languages</th>
+            <td>{{ data.languages|default:"<span class='empty-field'>Not specified</span>" }}</td>
+        </tr>
+        
+        <tr>
+            <th>Hobbies</th>
+            <td>{{ data.hobbies|default:"<span class='empty-field'>Not specified</span>" }}</td>
+        </tr>
+        
+        <tr>
+            <th>Portfolio Link</th>
+            <td>
+                {% if data.portfolio_link %}
+                    <a href="{{ data.portfolio_link }}" class="external-link" target="_blank" rel="noopener noreferrer">
+                        {{ data.portfolio_link }}
+                    </a>
+                {% else %}
+                    <span class="empty-field">Not provided</span>
+                {% endif %}
+            </td>
+        </tr>
+        
+        <tr>
+            <th>LinkedIn</th>
+            <td>
+                {% if data.linkedin %}
+                    <a href="{{ data.linkedin }}" class="external-link" target="_blank" rel="noopener noreferrer">
+                        {{ data.linkedin }}
+                    </a>
+                {% else %}
+                    <span class="empty-field">Not provided</span>
+                {% endif %}
+            </td>
+        </tr>
+        
+        <tr>
+            <th>GitHub</th>
+            <td>
+                {% if data.github %}
+                    <a href="{{ data.github }}" class="external-link" target="_blank" rel="noopener noreferrer">
+                        {{ data.github }}
+                    </a>
+                {% else %}
+                    <span class="empty-field">Not provided</span>
+                {% endif %}
+            </td>
+        </tr>
+    </table>
+</div>
+
+{% include "public/footer.html" %}

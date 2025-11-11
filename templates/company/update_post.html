@@ -1,0 +1,149 @@
+{% include "company/company_header.html" %}
+<style>
+    /* Main container styling */
+    .my_div {
+        min-height: 77vh;
+        margin-top: 50px;
+        padding: 30px;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        width: 60%;
+        margin: 50px auto;
+    }
+
+    /* Heading styling */
+    .my_div h3 {
+        text-align: center;
+        color: #333;
+        font-size: 24px;
+        margin-bottom: 20px;
+        font-weight: 600;
+    }
+
+    /* Form styling */
+    form {
+        font-size: 16px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: left;
+        border: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f1f1f1;
+        font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    /* Input field styling */
+    input[type="text"], select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    input[type="text"]:focus, select:focus {
+        border-color: #007bff;
+        outline: none;
+    }
+
+    /* Submit button styling */
+    input[type="submit"], button a {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    /* Hover effect for buttons */
+    input[type="submit"]:hover, button a:hover {
+        background-color: #0056b3;
+    }
+
+    /* Cancel button styling */
+    button a {
+        margin-left: 10px;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+        .my_div {
+            width: 90%;
+            padding: 20px;
+        }
+
+        table {
+            font-size: 14px;
+        }
+
+        th, td {
+            padding: 10px;
+        }
+
+        input[type="text"], select {
+            font-size: 14px;
+        }
+    }
+</style>
+
+<div class="my_div">
+    <h3>Update Job Post</h3>
+
+    <form action="" method="post">
+        <table>
+            <tr>
+                <th>Job Vacancy</th>
+                <td><input type="text" name="job_vacancy" value="{{data.job_vacancy}}" required></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td><input type="text" name="description" value="{{data.description}}" required></td>
+            </tr>
+            <tr>
+                <th>Exam</th>
+                <td><input type="text" name="exam" value="{{data.exam}}" required></td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>
+                    <select name="status" required>
+                        <option value="active" {% if data.status == 'active' %} selected {% endif %}>Active</option>
+                        <option value="disclosed" {% if data.status == 'disclosed' %} selected {% endif %}>Disclosed</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <td>
+                    <input type="submit" name="submit" value="Update Post">
+                    <a href="/company_view_post" class="btn btn-primary">Cancel</a>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+{% include "public/footer.html" %}
