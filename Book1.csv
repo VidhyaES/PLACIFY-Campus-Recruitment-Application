@@ -1,0 +1,35 @@
+Job Title,Skill1,Skill2,Skill3,Skill4,Skill5,Skill6,Skill7,Skill8,Skill9,Skill10
+Software Engineer,Java,Python,C++,JavaScript,HTML,CSS,SQL,React,Angular,Node.js
+Python Developer,Python,Numpy,Pandas,API Development,RESTful API Design,Flask,SQL,DSA,AWS,Django
+Frontend Developer,HTML,CSS,JavaScript,Responsive design,Webpack,Jest,GraphQL,TypeScript,CSS-in-JS,React
+MERN Stack Developer,MongoDB,Express.js,React.js,Node.js,REST/GraphQL APIs,Redux,JWT Authentication,AWS,Webpack,Jest
+Digital Marketing Specialist,SEO,Google Analytics & Tag Manager,Social Media Marketing,Content Marketing,Email Marketing,PPC Campaigns,Conversion Rate Optimization,Marketing Automation,Data AnalysisAlpha/Beta Testing,
+Data Scientist,Python,R Programming,Machine Learning,Pandas,Numpy,SQL,Big Data,Deep Learning,Flask,Tensorflow
+DevOps Engineer,CI/CD,Docker,Kubernetes,AWS,Configuration Management,Monitoring,Networking Fundamentals,Linux,Python,Bash Scripting
+Cybersecurity Analyst,Ethical Hacking,SIEM Tools,Network Security,Cryptography,Firewall Management,Compliance,Incident Response,Kali Linux,Risk Management,Vulnerability Assessment
+Cloud Solutions Architect,AWS,GCP,Azure,Kubernetes,Cost Optimization,Security &Compliance,Infrastructure design,Terraform,Networking,VPC
+Web Developer,HTML,CSS,JavaScript,Python,Java,SQL,React,Data Structures,,
+Flutter Developer,Dart programming,Flutter framework,State management,UI/UX Implementation,API Integration,Firebase Services,Testing,Native Interoperability,CI/CD,
+Backend Developer,API Design,SQL,Caching,Authentication,Microservices,Docker,AWS,GCP,Cloud,security
+Java Developer,Java,Hibernate,JVM multithreading,JUnit,Maven,Kafka,CI/CD,Oops concepts,Spring boot,
+MEAN Stack Developer,MongoDB,Express.js,Angular.js,Typescript,RxJS,NgRx,Docker,REST APIs,,
+Ruby on Rails Developer,Ruby,Rails,Rspec,PostgreSQL,MVC,Git,Heroku,Sidekiq,API Design,
+Go Developer,Go,Goroutines,Gin/Echo,Grpc,Kubernetes,PostgreSQL,Unit testing,Concurrency,Docker,
+Full-Stack Developer,React,Node.js,Database Design,SQL,Python,Agile,Cloud Deployment,REST/GraphQL,State Management,
+Machine Learning Engineer,PyTorch,MLOps,Kubeflow,Explainable AI,Spark,Airflow,Python,Machine Learning,Neural networks,Deep Learning
+Data Engineer,ETL Pipelines,SQL,NoSQL,Kafka,BigQuery,Python,Data Modelling,Airflow,Data Warehousing,Cloud Data Tools
+Business Intelligence Analyst,SQL,Tableau,Power BI,Data Modelling,Excel,Dashboarding,ETL Statistics,A/B Testing,Python ,Story Telling
+AI Research Scientist,Deep Learning,Research Papers,CUDA,Reinforcement Learning,Linear Algebra,PyTorch,Distributed Systems,Ethics In AI,AI ,Python
+Cloud Architect,Multi-Cloud Design,Severless,Cost Optimization,Networking,Security,laC,Compliance,Migration Strategies,Disaster Recovery,AWS
+Software Engineer,Internal Developer Platforms,Backstage.io,GitOps,Observability,API Gateways,Self-Service Tools,Kubernetes Operators,,,
+Database Administrators,SQL,Replication,Backup/Recovery,NoSQL,Cloud Databases,Schema Design,Performance Monitoring,Secuirty,Partitioning,
+Ethical Hacker,Penetration testing,Kali Linux,OWASP Top 10,Burp Suite,Social Engineering,Exploit Development,Red Teaming,Forensics,,
+Security Engineer,SIEM,Splunk,IDS/IPS,Zero Trust,IAM,Threat Modelling,Secure Coding,Compliance(ISO 27001),Cloud Security,PKI
+Cryptographer,Encryption Algorithms,PKI,Quantun Resistance,Blockchain,Homomorphic Encryption,Cryptographic protocols,Side-Channel Attacks,,,
+Network Engineer,Cisco,Juniper,BGP,SD-WAN,VPNs,Firewalls,IPv6,Network Automation,Python,
+System Administrators,Linux,Windows Server,Active Directory,Virtualisation,Backup Solutions,PowerShell/Bash,Monitoring,Patch Management,,
+Embedded System Engineer,C,C++,RTOS,ARM Architecture,Sensors,Device Drivers,Debugging,FPGA,Power Management,Communication Protocols
+Block Chain Developer,Solidity,Smart Contracts,Ethereum,Web3.js,Consensus Algorithms,Cryptography,DeFi,NFT Standards,Truffle,
+IoT Engineer,Raspberry Pi,MQTT,LoRaWAN,Edge Computing,Sensor Networks,Embedded Linux,AWS IoT,Real-time Systems,,
+AR/VR Developer,Unity3D,Unreal Engine,3D Modeling,Shaders,SLAM,UX for VR,Performance Optimization,Spatial Computing,,
+IT Project Manager,Agile/Scrum,Jira,Risk Management,Budgeting,Stakeholder Communication,SDLC,Vendor Management,,,
